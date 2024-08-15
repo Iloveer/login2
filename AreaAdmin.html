@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/AreaAdmin.css">
+</head>
+
+<body>
+  <nav>
+    <div class="titulo">
+      <h1> Lista de Tareas</h1>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="rellenado">
+        <button class="for">Crear</button>
+      </div>
+      <div class="formulario">
+        <span class="cerar"><ion-icon name="close"></ion-icon></span>
+        <div class="formu">
+          <h2>Crear</h2>
+          <form action="#" id="formulario">
+            <div class="input">
+              <span class="icon"><ion-icon name="information-circle"></ion-icon></span>
+              <input type="text" id="titulo">
+              <label>Titulo</label>
+            </div>
+            <div class="input">
+              <span class="icon"><ion-icon name="list-box"></ion-icon></span>
+              <input type="text" id="descripcion">
+              <label>Descripción</label>
+            </div>
+            <div class="input" id="fecha">
+              <span class="icon"></span>
+              <input type="date" id="fechaInput">
+              <label>Fecha</label>
+            </div>
+            <button type="submit" id="btnCrear">Crear</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+  </nav>
+
+
+  <div class="todo-list">
+
+    <div class="tarea-contenido" id="contenido"></div>
+  </div>
+
+  <script src="formulario.js"></script>
+
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</body>
+
+</html>
