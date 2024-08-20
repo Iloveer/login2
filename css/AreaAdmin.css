@@ -1,270 +1,199 @@
-html{
+*{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+html {
     overflow: hidden;
-}
-.body {
-    background-size: cover;
-    height: 100%;
-    width: 100%;
+
 }
 
-.nav {
-    background: rgba(0, 0, 0, 5);
+body {
+    /* background: linear-gradient(136deg, rgba(248, 191, 121, 0.67) 28%, rgba(214, 213, 213, 0.67)50%, rgba(248, 191, 121, 0.67)75%); */
+    margin: 0 !important;
+}
+
+.layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 60px 60px auto 60px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'header' 'sidebar' 'main' 'footer';
+    height: 100vh;
+    background-color: #ccc;
+
+}
+
+@media (min-width: 480px) {
+    .layout {
+        display: grid;
+        grid-template-rows: 60px auto 40px;
+        grid-template-columns: 200px auto;
+        grid-template-areas:
+            'header header header'
+            'sidebar main main'
+            'footer main main';
+    }
+}
+
+header {
+    grid-area: header;
+    background-color: #e27602;
+    color: #031c5c;
     display: flex;
-    justify-content: center;
-    padding: 0 20%;
-    backdrop-filter: blur(30px);
-    position: fixed;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #efefefee;
+
+}
+
+aside {
+    grid-area: sidebar;
+    background-color: #FCF8F3;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: center;
+
+}
+
+main {
+    grid-area: main;
+    display: flex;
     width: 100%;
-    height: 110px;
-}
-
-.titulo h1 {
-    font-size: 20px;
-    margin: 15px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    text-align: initial;
-}
-
-.sidebar-nav {
-
     height: 100%;
-    width: 200px;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    background-color: #ECE6E5;
-    border: 1px solid #ccc;
-    display: block;
-    justify-content: space-between;
-    padding: 5px;
+    background-color: #EFEFEF;
 }
 
-.rellenado .for {
-    width: 130px;
+.myButton {
+    box-shadow: 8px 11px 11px -7px #030303c4;
+    background: linear-gradient(to bottom, #fdfcfc 5%, #e7e9e9 100%);
+    background-color: #599bb3;
+    border-radius: 14px;
+    display: inline-block;
+    align-items: center;
+    cursor: pointer;
+    color: #2b09eb8f;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 32px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #3d768a;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.myButton>i {
+    color: #000000;
+}
+
+.myButton:hover {
+    background: linear-gradient(to bottom, #fff 5%, #dbe5ff 75%);
+    background-color: #408c99;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.sidebar {
+    background-color: #FCF8F3;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.contenedor-header {
+    grid-area: header;
+    position: fixed;
+    border-bottom: 1px;
+    background-color: rgb(245, 164, 14);
+    z-index: 50;
+}
+
+.contenedor-header header {
+    margin: auto;
+    display: flex;
+    height: 58px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    border-bottom: 1px;
+    background-color: rgb(245, 164, 14);
+    z-index: 50;
+
+}
+
+.contenedor-header .btn {
+    width: 120px;
     height: 50px;
     background: transparent;
     border: 2px solid #fff;
-    outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     color: #fff;
-    font-weight: 500;
-    margin-left: 15px;
-    margin-top: 10px;
-    transition: .5s;
+    font-weight: 600;
+    margin-left: 40px;
 }
 
-.rellenado .for:hover {
-    background: #fff;
-    color: #162938;
+.contenedor-header .btn:hover {
+    background-color: #fff;
+    color: #090f1d;
 }
 
-.formulario {
-    position: relative;
-    width: 300px;
-    height: 340px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .5);
-    border-radius: 20px;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+.txtNaranja {
+    color: #2b09eb;
+}
+
+.yuo {
+    margin-top: 0 20px 0;
+}
+
+.contenedor-header header .redes a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 8px;
+}
+
+.contenedor-header header .redes a:hover {
+    color: #ff1133;
+}
+
+.nav-responsive {
     display: none;
-    justify-content: center;
-    align-items: center;
-    left: 20em;
-    overflow: hidden;
-    transition: transform .5s ease, height .2s ease;
-
-
+    font-size: 25px;
 }
 
-.show {
+/* *** */
+/* FOOTER */
+/* *** */
+footer {
+    grid-area: footer;
+    background-color: #ccc;
+    padding: 0;
+}
+
+footer .info {
     display: flex;
-}
-
-.titulo {
-    align-items: center;
-    color: #162938;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    justify-content: center;
-    position: relative;
-    text-align: center;
-}
-
-.editar {
-    background: #ccc;
-    font-size: 1em;
-    justify-content: center;
-    align-items: center;
-    color: #55acee;
-    border: 2px #55acee solid;
-    font-family: Arial, sans-serif;
-    left: 0;
-    border-radius: 6px;
-}
-
-.editar:hover {
-    background-color: #55acee;
-    color: #fff
-}
-
-.eliminar {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    background: #ccc;
-    font-size: 1em;
-    align-items: center;
-    color: #55acee;
-    border: 2px #55acee solid;
-    border-radius: 6px;
-
-
-}
-
-.eliminar:hover {
-    background-color: #55acee;
-    color: #fff
-}
-
-.formulario .formu {
-    width: 100%;
-    padding: 30px;
-}
-
-.formulario .cerar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    background: #162938;
-    font-size: 1.8em;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-bottom-left-radius: 20px;
-    cursor: pointer;
-    z-index: 1;
-
-}
-
-.formu h2 {
-    font-size: 2em;
-    color: #162938;
-    text-align: center;
-}
-
-
-.input {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    border-bottom: 2px solid #162938;
-    margin: 30px 0;
-}
-
-.input label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
-    font-size: 1em;
-    color: #162938;
-    font-weight: 600;
-    pointer-events: none;
-    transition: .5s;
-
-}
-
-.input input:focus~label,
-.input input:valid~label {
-    top: -5px;
-
-}
-
-.input input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    font-size: 1em;
-    color: #162938;
-    font-weight: 600;
-    padding: 0 30px 0 2px;
-}
-
-.input .icon {
-    position: absolute;
-    right: 4px;
-    font-size: 1.2em;
-    color: #162938;
-    line-height: 35px;
-
-}
-
-#btnCrear {
-    width: 100%;
-    height: 45px;
-    background: #162938;
-    border: none;
-    outline: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #fff;
-    font-weight: 500;
-
-
-}
-
-.todo-list {
-    display: flex;
+    margin: 3px;
     justify-content: space-between;
-    background-color: #B6B0AF;
-    padding: 10px;
-    width: calc(100% - 230px);
-    right: 0;
-    position: absolute;
-    height: 100%;
-
+    padding: 0 28px;
 }
 
-.list-section {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    width: 30%;
-    margin: 12px;
-}
-
-.section-header {
-    background-color: #FF8C00;
-    color: #fff;
-    padding: 5px;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 8px;
-
-}
-
-.tarea-contenido {
-    width: 100%;
-    min-height: 870px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 8px;
-    padding: 8px;
-    background-color: #fff;
-    height: 89%;
-    top: 0;
-  }
-
-.tarea {
-    background-color: #ADD8E6;
-    border-radius: 3px;
-    padding: 3px;
-    margin-bottom: 3px;
+footer .info a {
+    text-decoration: none;
+    color: #797e8e;
+    display: inline-block;
+    margin: 0 8px;
 }
