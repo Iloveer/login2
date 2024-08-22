@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/e74c8090d8.js" crossorigin="anonymous"></script>
 </head>
+
+
 <body>
-    <div class="login-container"  >
-        
+    <div class="login-container">
         <div class="logo">
             <img src="../logi.jpg" alt="Logo">
         </div>
         <h2>Iniciar Sesión</h2>
-        <form>
+        <form id="login-form">
             <div class="input-group">
                 <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Usuario">
+                <input type="text" placeholder="Usuario" id="form-usuario">
             </div>
             <div class="input-group">
                 <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Ingrese Contraseña">
+                <input type="password" placeholder="Ingrese Contraseña" id="form-password">
             </div>
-            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
-            <button type="submit">Ingresar</button>
+            <a href="recuperar.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            <button type="submit" id="btn-ingresar">Ingresar</button>
         </form>
-        <div class="close-button">
-            <i class="fas fa-times"></i>
-        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./scrip.js"></script>
 </body>
 </html>
