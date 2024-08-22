@@ -1,0 +1,198 @@
+* {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0 !important;
+}
+
+.layout {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 60px 60px auto 60px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'header' 'sidebar' 'main' 'footer';
+    height: 100vh;
+    background-color: #ccc;
+}
+
+/* *** */
+/* ENCABEZADO*/
+/* *** */
+header {
+    grid-area: header;
+    background-color: #e27602;
+    color: #031c5c;
+    display: flex;
+}
+
+.contenedor-header {
+    grid-area: header;
+    position: fixed;
+    border-bottom: 1px;
+    background-color: rgb(245, 164, 14);
+    z-index: 50;
+}
+
+.contenedor-header header {
+    margin: auto;
+    display: flex;
+    height: 58px;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    position: fixed;
+    border-bottom: 1px;
+    background-color: rgb(245, 164, 14);
+    z-index: 50;
+}
+
+.contenedor-header .btn {
+    width: 120px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+    margin-left: 40px;
+}
+
+.contenedor-header .btn:hover {
+    background-color: #fff;
+    color: #090f1d;
+}
+
+.txtNaranja {
+    color: #2b09eb;
+}
+
+.yuo {
+    margin-top: 0 20px 0;
+}
+
+.contenedor-header header .redes a {
+    text-decoration: none;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 8px;
+}
+
+.contenedor-header header .redes a:hover {
+    color: #ff1133;
+}
+
+.nav-responsive {
+    display: none;
+    font-size: 25px;
+}
+
+/* *** */
+/* SIDEBAR*/
+/* *** */
+aside {
+    grid-area: sidebar;
+    background-color: #FCF8F3;
+    display: flex;
+    flex-direction: column;
+    justify-content: initial;
+    align-items: center;
+}  
+
+.myButton {
+    box-shadow: 8px 11px 11px -7px #030303c4;
+    background: linear-gradient(to bottom, #fdfcfc 5%, #e7e9e9 100%);
+    background-color: #599bb3;
+    border-radius: 14px;
+    display: inline-block;
+    align-items: center;
+    cursor: pointer;
+    color: #2b09eb8f;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 32px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #3d768a;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.myButton>i {
+    color: #000000;
+}
+
+.myButton:hover {
+    background: linear-gradient(to bottom, #fff 5%, #dbe5ff 75%);
+    background-color: #408c99;
+}
+
+.myButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.sidebar {
+    background-color: #FCF8F3;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+/* *** */
+/* MAIN*/
+/* *** */
+main {
+    grid-area: main;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
+}
+/* *** */
+/* FOOTER */
+/* *** */
+
+footer {
+    grid-area: footer;
+    background-color: #ccc;
+    padding: 5px;
+}
+
+footer .info {
+    display: flex;
+    margin: 3px;
+    justify-content: space-between;
+    padding: 0 28px;
+}
+
+footer .info a {
+    text-decoration: none;
+    color: #797e8e;
+    display: inline-block;
+    margin: 0 7px;
+}
+/* *** */
+/* RESPONSE */
+/* *** */
+@media (min-width: 480px) {
+    .layout {
+        display: grid;
+        grid-template-rows: 60px auto 40px;
+        grid-template-columns: 200px auto;
+        grid-template-areas:
+            'header header header'
+            'sidebar main main'
+            'footer main main';
+    }
+}
