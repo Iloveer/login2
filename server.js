@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var cors = require('cors')
 const { Pool } = require('pg');
+// const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -11,13 +12,17 @@ const pool = new Pool({
     user: 'postgres',
     host: 'localhost',
     database: 'ejemplo',
-    password: '12345',
+    password: 'admin',
     port: 5432,
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 // Ruta para manejar el login
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/login', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'public', 'login.html'));
+// });
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
 console.log(username);

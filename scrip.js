@@ -4,6 +4,7 @@ $(document).ready(function () {
 
     // var username = $("input[name='username']").val();
     // var password = $("input[name='password']").val();
+
     var username = $("#form-usuario").val();
     var password = $("#form-password").val();
 
@@ -21,7 +22,6 @@ $(document).ready(function () {
     });
 
     console.log();
-    alert("llegaste aqui");
     console.log(username);
     console.log(password);
   });
