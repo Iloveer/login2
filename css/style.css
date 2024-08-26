@@ -76,15 +76,16 @@ input {
 }
 
 .forgot-password {
-    display: block;
     text-align: left;
     color: #4a90e2;
     text-decoration: none;
     margin-bottom: 20px;
     font-size: 14px;
+    display: inline-block;
+    padding: 5px;
 }
 
-button {
+#btn-ingresar {
     width: 100%;
     padding: 10px;
     background-color: #ffa500;
@@ -95,7 +96,7 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#btn-ingresar:hover {
     background-color: #ff8c00;
 }
 
@@ -103,4 +104,14 @@ button:hover {
     .login-container {
         margin-top: 50px;
     }
+}
+#togglePassword {
+    cursor: pointer;
+    margin-left: 10px;
+}
+.fa-lock, .fa-lock-open {
+    display: inline-block;
+}
+.hidden {
+    display: none;
 }

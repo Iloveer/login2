@@ -72,7 +72,7 @@ input {
     border-radius: 5px;
     font-size: 16px;
 }
-.btn{
+.ctr-btn-recuperrar {
     display: flex;
     justify-content: center;
     top: 50%;
@@ -81,7 +81,7 @@ input {
     transform: translate(-50%);
 }
 
-button {
+.btn-recuperrar{
     margin-right: 15px;
     margin-left: 15px;
     width: 125px;
@@ -95,8 +95,12 @@ button {
     float: right;
 }
 
-button:hover {
+.btn-recuperrar:hover {
     background-color: #ff8c00;
+}
+a{  
+    text-decoration: none;
+    color: white;
 }
 @media (max-width: 480px) {
     .login-container {

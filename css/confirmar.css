@@ -74,7 +74,7 @@ input {
     border-radius: 5px;
     font-size: 16px;
 }
-.btn{
+.ctr-btn-confirmar{
     display: flex;
     justify-content: center;
     top: 80%;
@@ -83,7 +83,7 @@ input {
     transform: translate(-50%);
 }
 
-button {
+.btn-confirmar{
     margin-right: 15px;
     margin-left: 15px;
     width: 125px;
@@ -97,7 +97,7 @@ button {
     float: right;
 }
 
-button:hover {
+.btn-confirmar:hover {
     background-color: #ff8c00;
 }
 @media (max-width: 480px) {
