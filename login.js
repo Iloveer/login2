@@ -2,7 +2,7 @@ document.getElementById('form-usuario').addEventListener('input', function (e) {
     this.value = this.value.replace(/[^a-zA-Z]/g, '');
 });
 document.getElementById('togglePassword').addEventListener('click', function () {
-    const passwordInput = document.getElementById('password');
+    const passwordInput = document.getElementById('form-password');
     const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
     passwordInput.setAttribute('type', type);
 

@@ -20,11 +20,11 @@
         <form id="login-form" action="AreaAdmin.html">
             <div class="input-group">
                 <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Usuario" id="form-usuario">
+                <input type="text" placeholder="Usuario" id="form-usuario" autocomplete="username">
             </div>
             <div class="input-group">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Ingrese Contraseña" id="form-password">
+                <i class="fa-solid fa-lock" id="togglePassword"></i>
+                <input type="password" placeholder="Ingrese Contraseña" id="form-password" autocomplete="current-password" >
             </div>
             <a href="recuperar.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
             <button type="submit" id="btn-ingresar">Ingresar</button>
