@@ -107,7 +107,7 @@ aside {
     flex-direction: column;
     justify-content: initial;
     align-items: center;
-}  
+}
 
 .myButton {
     box-shadow: 8px 11px 11px -7px #030303c4;
@@ -149,6 +149,7 @@ aside {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     height: 100%;
 }
+
 /* *** */
 /* MAIN*/
 /* *** */
@@ -159,6 +160,7 @@ main {
     height: 100%;
     background-color: #EFEFEF;
 }
+
 /* *** */
 /* FOOTER */
 /* *** */
@@ -182,6 +184,7 @@ footer .info a {
     display: inline-block;
     margin: 0 7px;
 }
+
 /* *** */
 /* RESPONSE */
 /* *** */

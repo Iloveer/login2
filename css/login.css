@@ -1,8 +1,9 @@
-*{
+* {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
+
 body {
     background-color: #f0f0f0;
     display: flex;
@@ -23,7 +24,6 @@ body {
     margin: 100px auto;
     background: linear-gradient(136deg, rgba(109, 153, 210, 0.67) 28%, rgba(214, 213, 213, 0.67)50%, rgba(248, 191, 121, 0.67)75%);
     border: 1mm ridge rgba(226, 227, 215, 0.6);
-
 }
 
 .logo {
@@ -34,7 +34,6 @@ body {
 .logo img {
     width: 90px;
     height: auto;
-
     border-radius: 50%;
 }
 
@@ -49,7 +48,9 @@ h2 {
 }
 
 .login-container input[type="text"],
-.login-container input[type="password"] {
+.login-container input[type="password"],
+.login-container input[type="number"],
+.login-container input[type="email"] {
     width: 100%;
     padding: 6px;
     margin-bottom: 1px;
@@ -65,7 +66,6 @@ h2 {
     transform: translateY(-50%);
     color: #888;
 }
-
 
 input {
     width: 100%;
@@ -105,13 +105,110 @@ input {
         margin-top: 50px;
     }
 }
+
 #togglePassword {
     cursor: pointer;
     margin-left: 10px;
 }
-.fa-lock, .fa-lock-open {
+
+.fa-lock,
+.fa-lock-open {
     display: inline-block;
 }
+
 .hidden {
     display: none;
+}
+
+/*****************
+* recuperar.html *
+******************/
+.input-groupp {
+    position: relative;
+    top: 40px;
+    margin-bottom: 20px;
+}
+
+/* .login-container input[type="email"]{
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 1px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+} */
+.input-groupp i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.ctr-btn-recuperrar {
+    display: flex;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.btn-recuperrar {
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 125px;
+    padding: 10px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-recuperrar:hover {
+    background-color: #ff8c00;
+}
+
+/*****************
+* confirmar.html *
+******************/
+/* .login-container input[type="email"],
+.login-container input[type="text"],
+.login-container input[type="password"],
+.login-container input[type="number"] {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 1px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+} */
+.ctr-btn-confirmar {
+    display: flex;
+    justify-content: center;
+    top: 80%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.btn-confirmar {
+    margin-right: 15px;
+    margin-left: 15px;
+    width: 125px;
+    padding: 10px;
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+}
+
+.btn-confirmar:hover {
+    background-color: #ff8c00;
 }
