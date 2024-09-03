@@ -40,7 +40,6 @@ console.log(password);
         res.status(500).send({ message: 'Error interno del servidor' });
     }
 });
-
 app.listen(port, () => {
     console.log('Servidor corriendo en http://localhost:${port}');
 });
