@@ -55,23 +55,7 @@ header {
     z-index: 50;
 }
 
-.contenedor-header .btn {
-    width: 120px;
-    height: 50px;
-    background: transparent;
-    border: 2px solid #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    color: #fff;
-    font-weight: 600;
-    margin-left: 40px;
-}
 
-.contenedor-header .btn:hover {
-    background-color: #fff;
-    color: #090f1d;
-}
 
 .txtNaranja {
     color: #2b09eb;
@@ -112,7 +96,7 @@ aside {
 .myButton {
     box-shadow: 8px 11px 11px -7px #030303c4;
     background: linear-gradient(to bottom, #fdfcfc 5%, #e7e9e9 100%);
-    background-color: #599bb3;
+    background-color: #ccc;
     border-radius: 14px;
     display: inline-block;
     align-items: center;
@@ -124,7 +108,8 @@ aside {
     padding: 13px 32px;
     text-decoration: none;
     text-shadow: 0px 0px 0px #3d768a;
-    margin-top: 10px;
+    margin-top: 30px;
+    margin-left: 15px;
     width: 50%;
 }
 
@@ -133,8 +118,8 @@ aside {
 }
 
 .myButton:hover {
-    background: linear-gradient(to bottom, #fff 5%, #dbe5ff 75%);
-    background-color: #408c99;
+    background: linear-gradient(to bottom, #fff 5%, #fff 75%);
+    background-color: #ccc;
 }
 
 .myButton:active {
@@ -171,19 +156,7 @@ footer {
     padding: 5px;
 }
 
-footer .info {
-    display: flex;
-    margin: 3px;
-    justify-content: space-between;
-    padding: 0 28px;
-}
 
-footer .info a {
-    text-decoration: none;
-    color: #797e8e;
-    display: inline-block;
-    margin: 0 7px;
-}
 
 /* *** */
 /* RESPONSE */
