@@ -11,6 +11,7 @@ $(document).ready(function () {
     // $.ajax({
     //   type: "POST",
     //   url: "http://localhost:3000/login", // Endpoint del backend que manejará el login
+    //   url: "http://192.168.1.41/Usuario", // Endpoint del backend que manejará el login
     //   data: { username: username, password: password },
     //   success: function (response) {
     //     alert("Login exitoso");
