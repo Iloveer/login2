@@ -157,15 +157,35 @@ main {
     margin-top: 50px;
     margin-right: 50px;
     border: 1px solid #000;
-}
-th {
-    width: 15%;
-    text-align: left;
-    vertical-align: top;
-    border: 1px solid #000;
     border-collapse: collapse;
-    padding: 0.3em;
+    font-family: 'Poppins', sans-serif;
 }
+
+thead th {
+    
+    background-color: #ccc;
+    width: 15%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+tbody td {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    padding:5px;
+    width: 15%;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+ 
+ table td, table th{
+    height: 15px;
+ }
+
 
 /* *** */
 /* FOOTER */
