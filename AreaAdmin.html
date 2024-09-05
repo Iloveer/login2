@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -28,53 +28,58 @@
     </div>
     <aside>
       <div class="sidebar">
-        <div class="myButton">
+        <div class="myButton" data-view="inicio">
           <i class="fas fa-home"></i>
           Inicio
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="usuario">
           <i class="fas fa-user"></i>
           Usuario
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="Docentes">
           <i class="fas fa-graduation-cap"></i>
           Docentes
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="Roles">
           <i class="fas fa-user-cog"></i>
           Roles
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="Cursos">
           <i class="fas fa-window-maximize"></i>
           Cursos
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="Horarios">
           <i class="fas fa-clock"></i>
           Horarios
         </div>
-        <div class="myButton">
+        <div class="myButton" data-view="Grados">
           <i class="fa-solid fa-layer-group"></i>
           Grados
         </div>
+      </div>
     </aside>
     <main>
       <div id="datos-container">
-        <table id="datos-tabla" >
+        <div id="view-container">
+          <table id="datos-tabla">
             <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>CI</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Domicilio</th>
-                </tr>
+              <tr>
+                <th>Nombre</th>
+                <th>CI</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Domicilio</th>
+              </tr>
             </thead>
+
             <tbody>
-                <!-- Los datos serán insertados aquí -->
+              <!-- Los datos serán insertados aquí -->
             </tbody>
-        </table>
-    </div>
+          </table>
+        </div>
+        <div class="content"></div>
+      </div>
     </main>
     <footer>
       <div class="info">
@@ -82,7 +87,9 @@
     </footer>
   </div>
   <script src="https://kit.fontawesome.com/dfe622d565.js" crossorigin="anonymous"></script>
-  <script src="./js/usuario.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./js/us.js"></script>
+  <!-- <script src="./js/params.js"></script> -->
 </body>
 
 </html>

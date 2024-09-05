@@ -149,10 +149,12 @@ main {
     scrollbar-width: none;
     height: 100%;
 }
-#datos-container{
+
+#datos-container {
     width: 100%;
 }
-#datos-tabla{
+
+#datos-tabla {
     width: calc(100% - 100px);
     margin-left: 50px;
     margin-top: 50px;
@@ -163,7 +165,7 @@ main {
 }
 
 thead th {
-    
+
     background-color: #ccc;
     width: 15%;
     padding: 12px;
@@ -175,17 +177,18 @@ tbody td {
     background-color: #f9f9f9;
     padding: 10px;
     border: 1px solid #ddd;
-    padding:5px;
+    padding: 5px;
     width: 15%;
 }
 
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
- 
- table td, table th{
+
+table td,
+table th {
     height: 15px;
- }
+}
 
 
 /* *** */
@@ -213,4 +216,18 @@ footer {
             'sidebar main main'
             'footer main main';
     }
+}
+
+
+.content {
+/*background-color: #000;*/
+width: 100%;
+height: 7%;
+}
+
+#view-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #fff;
+    height: 100%;
 }
