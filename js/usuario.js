@@ -1,6 +1,6 @@
 /*
-// const urls = "http://192.168.1.41/Usuario";
-const urls = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+// const url = "http://192.168.1.41/Usuario";
+const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
 
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla() {
@@ -26,7 +26,7 @@ function cargarDatosEnTabla() {
 }
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    fetch(urls)
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los datos');
@@ -43,14 +43,14 @@ function obtenerDatos() {
 document.addEventListener('DOMContentLoaded', cargarDatosEnTabla);
 */
 /*
-urls desde la cual obtener los datos
-urls desde la cual obtener los datos
-const urls = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+url desde la cual obtener los datos
+url desde la cual obtener los datos
+const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
 
 // Función para cargar los datos
 async function cargarDatos() {
     try {
-        const response = await fetch(urls);
+        const response = await fetch(url);
         const datos = await response.json(); // Convertir la respuesta a JSON
 
         const tbody = document.querySelector('#datos-tabla tbody');
@@ -79,7 +79,7 @@ async function cargarDatos() {
 window.onload = cargarDatos;
 */
 
-const urls = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
 
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como parámetro
@@ -110,7 +110,7 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
 
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    fetch(urls)
+    fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error al obtener los datos');
