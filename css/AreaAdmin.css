@@ -94,7 +94,7 @@ aside {
     align-items: center;
 }
 
-.myButton {
+.myButton{
     box-shadow: 8px 11px 11px -7px #030303c4;
     background: linear-gradient(to bottom, #fdfcfc 5%, #e7e9e9 100%);
     background-color: #ccc;
@@ -113,7 +113,10 @@ aside {
     margin-left: 15px;
     width: 50%;
 }
-
+a{
+    text-decoration: none;
+    color: #3700ffaf;
+}
 .myButton>i {
     color: #000000;
 }

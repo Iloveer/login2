@@ -44,10 +44,10 @@ $(document).ready(function () {
     // Función para cargar la vista correspondiente
     function cargarVista(view) {
         // Intenta cargar la vista desde la carpeta 'views' primero
-        let urll = 'views/' + view + '.html';
+        let url = 'views/' + view + '.html';
 
         // Cargar la vista y manejar el error si no se encuentra
-        $('#view-container').load(urll, function (response, status) {
+        $('#view-container').load(url, function (response, status) {
             if (status === "error") {
                 // Si no encuentra la vista en 'views', intenta desde la raíz
                 console.warn('Vista no encontrada en la carpeta views/, buscando en el directorio raíz.');
