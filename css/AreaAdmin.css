@@ -165,6 +165,13 @@ table td,
 table th {
     height: 15px;
 }
+#form-container {
+    display: none; /* Ocultar el formulario inicialmente */
+    margin-top: 20px;
+}
+.form-group {
+    margin-bottom: 10px;
+}
 /* #fondoAdmin{
     height: calc(100% - 100px);
     border-radius: 50%;
