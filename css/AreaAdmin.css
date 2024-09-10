@@ -166,6 +166,14 @@ table td,
 table th {
     height: 15px;
 }
+/* #fondoAdmin{
+    height: calc(100% - 100px);
+    border-radius: 50%;
+    margin-left: 20%;
+    margin-top: 2%;
+    opacity: 35%;
+    position: absolute;
+} */
 /* *** */
 /* FOOTER */
 /* *** */
