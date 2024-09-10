@@ -11,7 +11,7 @@ function renderUsuario() {
                         <th>Correo</th>
                         <th>Fecha de Nacimiento</th>
                         <th>Domicilio</th>
-                        <th>Editar</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,6 +42,7 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
         let celdaFechaNacimiento = fila.insertCell(4);
         let celdaDomicilio = fila.insertCell(5);
         let celdaEditar = fila.insertCell(6);
+
         let btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
         btnEditar.className = 'btn-editar';
@@ -56,12 +57,12 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
             // Lógica para eliminar
             alert('Eliminar ' + dato.nombre);
         };
-        let btnOtro = document.createElement('button');
-        btnOtro.textContent = 'Otro';
-        btnOtro.className = 'btn-otro';
-        btnOtro.onclick = function() {
+        let btnAñadir = document.createElement('button');
+        btnAñadir.textContent = 'Añadir';
+        btnAñadir.className = 'btn-oñadir';
+        btnAñadir.onclick = function() {
             // Lógica para otro botón
-            alert('Otro ' + dato.nombre);
+            alert('Añadir ' + dato.nombre);
         };
         celdaNombre.textContent = dato.nombre || 'N/A';
         celdaCI.textContent = dato.ci;
@@ -71,7 +72,7 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
         celdaDomicilio.textContent = dato.domicilio;
         celdaEditar.appendChild(btnEditar);
         celdaEditar.appendChild(btnEliminar);
-        celdaEditar.appendChild(btnOtro);
+        celdaEditar.appendChild(btnAñadir);
     });
 }
 // Función para obtener los datos desde el host remoto
