@@ -43,8 +43,8 @@ function obtenerDatos() {
 document.addEventListener('DOMContentLoaded', cargarDatosEnTabla);
 */
 /*
-URL desde la cual obtener los datos
-URL desde la cual obtener los datos
+url desde la cual obtener los datos
+url desde la cual obtener los datos
 const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
 
 // Función para cargar los datos
@@ -99,7 +99,7 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
         let celdaFechaNacimiento = fila.insertCell(4);
         let celdaDomicilio = fila.insertCell(5);
 
-        celdaNombre.textContent = dato.nombre;
+        celdaNombre.textContent = dato.nombre || 'N/A';
         celdaCI.textContent = dato.ci;
         celdaTelefono.textContent = dato.telefono;
         celdaCorreo.textContent = dato.correo;
@@ -120,9 +120,18 @@ function obtenerDatos() {
         .then(datos => {
             cargarDatosEnTabla(datos); // Pasar los datos obtenidos a la función cargarDatosEnTabla
         })
+        // .catch(error => {
+        //     console.error('Hubo un problema con la solicitud:', error);
+        // });
         .catch(error => {
             console.error('Hubo un problema con la solicitud:', error);
+            document.getElementById('view-container').innerHTML = '<p>Error al cargar los datos.</p>';
         });
+        
+}
+function mostrarCargando() {
+    const tabla = document.getElementById('datos-tabla').getElementsByTagName('tbody')[0];
+    tabla.innerHTML = '<tr><td colspan="6">Cargando...</td></tr>';
 }
 
 // Cargar los datos cuando el DOM esté completamente cargado
