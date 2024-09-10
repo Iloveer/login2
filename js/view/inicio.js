@@ -5,7 +5,7 @@ function renderInicio() {
   container.append(plantilla);
 }
 
-const apiUrl = 'http://192.168.1.12/Usuario';
+const apUrl = 'http://192.168.1.12/Usuario';
 
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) {
