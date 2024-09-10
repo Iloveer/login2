@@ -1,4 +1,4 @@
-function renderUsuario() {
+function renderRoles() {
     const container = $("#view-container");
     container.empty();
     const tablaHTML = `
@@ -6,11 +6,8 @@ function renderUsuario() {
                 <thead>
                     <tr>
                         <th>Nombre</th>
-                        <th>CI</th>
-                        <th>Teléfono</th>
-                        <th>Correo</th>
-                        <th>Fecha de Nacimiento</th>
-                        <th>Domicilio</th>
+                        <th>Materia</th>
+                        <th>editar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -18,13 +15,11 @@ function renderUsuario() {
             </table>
             <div class="content"></div>
         `;
-    // Actualiza el contenido del contenedor con la tabla
-    //container.innerHTML = tablaHTML;
     container.append(tablaHTML);
     obtenerDatos()
 }
 
-// const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+// const Urls = 'https://66d901d94ad2f6b8ed533858.mockapi.io/docentes';
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como parámetro
     const tabla = document.getElementById('datos-tabla').getElementsByTagName('tbody')[0];
@@ -35,22 +30,15 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
     datos.forEach(dato => {
         let fila = tabla.insertRow();
         let celdaNombre = fila.insertCell(0);
-        let celdaCI = fila.insertCell(1);
-        let celdaTelefono = fila.insertCell(2);
-        let celdaCorreo = fila.insertCell(3);
-        let celdaFechaNacimiento = fila.insertCell(4);
-        let celdaDomicilio = fila.insertCell(5);
+        let celdaMateria = fila.insertCell(1);
+        let celdaEditar = fila.insertCell(2);
         celdaNombre.textContent = dato.nombre || 'N/A';
-        celdaCI.textContent = dato.ci;
-        celdaTelefono.textContent = dato.telefono;
-        celdaCorreo.textContent = dato.correo;
-        celdaFechaNacimiento.textContent = new Date(dato.fechanacimiento).toLocaleDateString(); // Convertir a formato de fecha legible
-        celdaDomicilio.textContent = dato.domicilio;
+        celdaMateria.textContent = dato.materia;
     });
 }
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+    const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/docentes';
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -61,9 +49,6 @@ function obtenerDatos() {
         .then(datos => {
             cargarDatosEnTabla(datos); // Pasar los datos obtenidos a la función cargarDatosEnTabla
         })
-        // .catch(error => {
-        //     console.error('Hubo un problema con la solicitud:', error);
-        // });
         .catch(error => {
             console.error('Hubo un problema con la solicitud:', error);
             document.getElementById('view-container').innerHTML = '<p>Error al cargar los datos.</p>';
@@ -73,6 +58,5 @@ function mostrarCargando() {
     const tabla = document.getElementById('datos-tabla').getElementsByTagName('tbody')[0];
     tabla.innerHTML = '<tr><td colspan="6">Cargando...</td></tr>';
 }
-// Cargar los datos cuando el DOM esté completamente cargado
 // document.addEventListener('DOMContentLoaded', obtenerDatos); // Llama a obtenerDatos en lugar de cargarDatosEnTabla
 
