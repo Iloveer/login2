@@ -205,5 +205,6 @@ footer {
     border: 1px solid #ccc;
     padding: 20px;
     background-color: #fff;
-    height: 100%;
+    height: auto;
+    min-height: calc(100% - 41px);
 }

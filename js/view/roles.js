@@ -32,8 +32,32 @@ function cargarDatosEnTabla(datos) { // Asegúrate de recibir 'datos' como pará
         let celdaNombre = fila.insertCell(0);
         let celdaMateria = fila.insertCell(1);
         let celdaEditar = fila.insertCell(2);
+        let btnEditar = document.createElement('button');
+            btnEditar.textContent = 'Editar';
+            btnEditar.className = 'btn-editar';
+            btnEditar.onclick = function() {
+                // Lógica para editar
+                alert('Editar ' + dato.nombre);
+            };
+            let btnEliminar = document.createElement('button');
+            btnEliminar.textContent = 'Eliminar';
+            btnEliminar.className = 'btn-eliminar';
+            btnEliminar.onclick = function() {
+                // Lógica para eliminar
+                alert('Eliminar ' + dato.nombre);
+            };
+            let btnOtro = document.createElement('button');
+            btnOtro.textContent = 'Otro';
+            btnOtro.className = 'btn-otro';
+            btnOtro.onclick = function() {
+                // Lógica para otro botón
+                alert('Otro ' + dato.nombre);
+            };
         celdaNombre.textContent = dato.nombre || 'N/A';
         celdaMateria.textContent = dato.materia;
+        celdaEditar.appendChild(btnEditar);
+        celdaEditar.appendChild(btnEliminar);
+        celdaEditar.appendChild(btnOtro);
     });
 }
 // Función para obtener los datos desde el host remoto
