@@ -1,4 +1,4 @@
-function renderUsuario() {
+function renderDocente() {
     const container = $("#view-container");
     container.empty();
     const tablaHTML = `
@@ -18,45 +18,45 @@ function renderUsuario() {
             </tbody>
         </table>
         <div class="content"></div>
-        <button id="btn-anadir">Añadir</button>
     `;
     container.append(tablaHTML);
     obtenerDatos();
-    document.getElementById("btn-anadir").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "block";
-    });
-    document.getElementById("cancelar").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "none";
-    });
-    document.getElementById("add-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+    
+    // document.getElementById("btn-anadir").addEventListener("click", function () {
+    //     document.getElementById("form-container").style.display = "block";
+    // });
+    // document.getElementById("cancelar").addEventListener("click", function () {
+    //     document.getElementById("form-container").style.display = "none";
+    // });
+    // document.getElementById("add-form").addEventListener("submit", function (event) {
+    //     event.preventDefault();
+    //     const formData = new FormData(this);
+    //     const data = {};
+    //     formData.forEach((value, key) => {
+    //         data[key] = value;
+    //     });
 
-        // Enviar los datos a la URL usando fetch
-        fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
-        // fetch('http://192.168.1.12/Usuario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(result => {
-                alert('Usuario agregado exitosamente');
-                document.getElementById("form-container").style.display = "none";
-                document.getElementById("add-form").reset();
-                obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error al agregar el usuario');
-            });
-    });
+    //     // Enviar los datos a la URL usando fetch
+    //     fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
+    //     // fetch('http://192.168.1.12/Usuario', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             alert('Usuario agregado exitosamente');
+    //             document.getElementById("form-container").style.display = "none";
+    //             document.getElementById("add-form").reset();
+    //             obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //             alert('Hubo un error al agregar el usuario');
+    //         });
+    // });
 }
 
 // Función para cargar los datos en la tabla
@@ -96,6 +96,7 @@ function cargarDatosEnTabla(datos) {
         btnAñadir.textContent = 'Añadir';
         btnAñadir.id = 'btn-añadir';
         btnAñadir.onclick = function () {
+            configurarFormulario();
         };
         celdaAcciones.appendChild(btnEditar);
         celdaAcciones.appendChild(btnEliminar);
@@ -122,5 +123,47 @@ function obtenerDatos() {
             document.getElementById('view-container').innerHTML = '<p>Error al cargar los datos.</p>';
         });
 }
+function configurarFormulario() {
+    // Mostrar el formulario cuando se hace clic en "Añadir"
+    document.getElementById("form-container").style.display = "block";
 
-document.addEventListener('DOMContentLoaded', renderInicio);
+    // Ocultar el formulario cuando se hace clic en "Cancelar"
+    document.getElementById("cancelar").addEventListener("click", function () {
+        document.getElementById("form-container").style.display = "none";
+    });
+
+    // Manejar el envío del formulario
+    document.getElementById("add-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        
+        // Convertir el formulario a un objeto
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // Enviar los datos a la API usando fetch
+        fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
+            // fetch('http://192.168.1.12/Usuario', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            alert('Usuario agregado exitosamente');
+            document.getElementById("form-container").style.display = "none";
+            document.getElementById("add-form").reset();
+            obtenerDatos(); // Volver a cargar los datos
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Hubo un error al agregar el usuario');
+        });
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderDocente);

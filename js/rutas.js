@@ -49,7 +49,16 @@ function rutas() {
     }
     if (path === '/docente') {
         console.log("/docente");
-        // Lógica para cargar la vista de docente si es necesario
+        loadScript('./js/view/docente.js').then(() => {
+            console.log("Script de Docente cargado");
+            if (typeof renderDocente === 'function') {
+                renderDocente();
+            } else {
+                console.error("La función renderdocente no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Docente:", err);
+        });
     }
     if (path === '/roles') {
         console.log("/roles");
@@ -59,10 +68,10 @@ function rutas() {
             if (typeof renderRoles === 'function') {
                 renderRoles();
             } else {
-                console.error("La función renderUsuario no está definida");
+                console.error("La función renderRoles no está definida");
             }
         }).catch((err) => {
-            console.error("Error al cargar el script de Usuario:", err);
+            console.error("Error al cargar el script de Roles:", err);
         });
     }
 }
