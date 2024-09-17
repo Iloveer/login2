@@ -250,18 +250,6 @@ footer {
 /* ********** */
 /* Formulario */
 /* ********** */
-.fondo-form{
-    /* position: absolute;
-    opacity: 0.0 - 1.0;
-    background-color: transparent; */
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    background-color: transparent;
-    backdrop-filter: blur(100px);
-    border: 1px solid gray;
-    border-radius: 8px;
-}
 #form-container {
     position: absolute;
     top: 25%;
