@@ -111,4 +111,4 @@ function obtenerDatos() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', renderInicio);
+document.addEventListener('DOMContentLoaded', renderUsuario);
