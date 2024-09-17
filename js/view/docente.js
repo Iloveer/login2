@@ -11,7 +11,8 @@ function renderDocente() {
                     <th>Correo</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Domicilio</th>
-                    <th></th>
+                    <th><button id="btn-anadir">Añadir</button></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -106,7 +107,7 @@ function cargarDatosEnTabla(datos) {
 
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
+    const url = `${URL_SERVER}/Usuario`;
     // const url = 'http://192.168.1.12/Usuario';
     fetch(url)
         .then(response => {
@@ -126,10 +127,12 @@ function obtenerDatos() {
 function configurarFormulario() {
     // Mostrar el formulario cuando se hace clic en "Añadir"
     document.getElementById("form-container").style.display = "block";
+    document.getElementById("view-container").style.display = "none";
 
     // Ocultar el formulario cuando se hace clic en "Cancelar"
     document.getElementById("cancelar").addEventListener("click", function () {
         document.getElementById("form-container").style.display = "none";
+        document.getElementById("view-container").style.display = "block";
     });
 
     // Manejar el envío del formulario
@@ -158,11 +161,14 @@ function configurarFormulario() {
             document.getElementById("form-container").style.display = "none";
             document.getElementById("add-form").reset();
             obtenerDatos(); // Volver a cargar los datos
+            document.getElementById("view-container").style.display = "block";
         })
         .catch(error => {
             console.error('Error:', error);
             alert('Hubo un error al agregar el usuario');
         });
+    document.getElementById("view-container").style.display = "block";
+
     });
 }
 
