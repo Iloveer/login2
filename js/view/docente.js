@@ -11,7 +11,7 @@ function renderDocente() {
                     <th>Correo</th>
                     <th>Fecha de Nacimiento</th>
                     <th>Domicilio</th>
-                    <th><button id="btn-anadir">Añadir</button></th>
+                    <th><button id="bt-anadir">Añadir</button></th>
                     
                 </tr>
             </thead>
@@ -22,44 +22,39 @@ function renderDocente() {
     `;
     container.append(tablaHTML);
     obtenerDatos();
-    
-    // document.getElementById("btn-anadir").addEventListener("click", function () {
-    //     document.getElementById("form-container").style.display = "block";
-    // });
-    // document.getElementById("cancelar").addEventListener("click", function () {
-    //     document.getElementById("form-container").style.display = "none";
-    // });
-    // document.getElementById("add-form").addEventListener("submit", function (event) {
-    //     event.preventDefault();
-    //     const formData = new FormData(this);
-    //     const data = {};
-    //     formData.forEach((value, key) => {
-    //         data[key] = value;
-    //     });
-
-    //     // Enviar los datos a la URL usando fetch
-    //     fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
-    //     // fetch('http://192.168.1.12/Usuario', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(data)
-    //     })
-    //         .then(response => response.json())
-    //         .then(result => {
-    //             alert('Usuario agregado exitosamente');
-    //             document.getElementById("form-container").style.display = "none";
-    //             document.getElementById("add-form").reset();
-    //             obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
-    //         })
-    //         .catch(error => {
-    //             console.error('Error:', error);
-    //             alert('Hubo un error al agregar el usuario');
-    //         });
-    // });
+    document.getElementById("bt-anadir").addEventListener("click", function () {
+        document.getElementById("form-container").style.display = "block";
+    });
+    document.getElementById("cancelar").addEventListener("click", function () {
+        document.getElementById("form-container").style.display = "none";
+    });
+    document.getElementById("add-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        fetch(`${URL_SERVER}/Usuario`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert('Usuario agregado exitosamente');
+                document.getElementById("form-container").style.display = "none";
+                document.getElementById("add-form").reset();
+                obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al agregar el usuario');
+            });
+    });
 }
-
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) {
     const tabla = document.getElementById('datos-tabla').getElementsByTagName('tbody')[0];
@@ -68,18 +63,11 @@ function cargarDatosEnTabla(datos) {
     datos.forEach(dato => {
         let fila = tabla.insertRow();
         fila.insertCell(0).textContent = dato.nombre || 'N/A';
-        fila.insertCell(1).textContent = dato.ci;
-        fila.insertCell(2).textContent = dato.telefono;
-        fila.insertCell(3).textContent = dato.correo;
-        fila.insertCell(4).textContent = new Date(dato.FechaNacimiento).toLocaleDateString();
-        fila.insertCell(5).textContent = dato.domicilio;
-        // fila.insertCell(0).textContent = dato.nombre || 'N/A';
-        // fila.insertCell(1).textContent = dato.DatosPersonale.ci;
-        // fila.insertCell(2).textContent = dato.DatosPersonale.telefono;
-        // fila.insertCell(3).textContent = dato.DatosPersonale.Correo;
-        // fila.insertCell(4).textContent = new Date(dato.DatosPersonale.FechaNacimiento).toLocaleDateString();
-        // fila.insertCell(5).textContent = dato.DatosPersonale.Domicilio;
-
+        fila.insertCell(1).textContent = dato.DatosPersonale.ci;
+        fila.insertCell(2).textContent = dato.DatosPersonale.telefono;
+        fila.insertCell(3).textContent = dato.DatosPersonale.Correo;
+        fila.insertCell(4).textContent = new Date(dato.DatosPersonale.FechaNacimiento).toLocaleDateString();
+        fila.insertCell(5).textContent = dato.DatosPersonale.Domicilio;
         let celdaAcciones = fila.insertCell(6);
         let btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
@@ -104,11 +92,9 @@ function cargarDatosEnTabla(datos) {
         celdaAcciones.appendChild(btnAñadir);
     });
 }
-
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
     const url = `${URL_SERVER}/Usuario`;
-    // const url = 'http://192.168.1.12/Usuario';
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -128,48 +114,40 @@ function configurarFormulario() {
     // Mostrar el formulario cuando se hace clic en "Añadir"
     document.getElementById("form-container").style.display = "block";
     document.getElementById("view-container").style.display = "none";
-
     // Ocultar el formulario cuando se hace clic en "Cancelar"
     document.getElementById("cancelar").addEventListener("click", function () {
         document.getElementById("form-container").style.display = "none";
         document.getElementById("view-container").style.display = "block";
     });
-
     // Manejar el envío del formulario
     document.getElementById("add-form").addEventListener("submit", function (event) {
         event.preventDefault();
         const formData = new FormData(this);
         const data = {};
-        
         // Convertir el formulario a un objeto
         formData.forEach((value, key) => {
             data[key] = value;
         });
-
-        // Enviar los datos a la API usando fetch
-        fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
-            // fetch('http://192.168.1.12/Usuario', {
+        fetch(`${URL_SERVER}/Usuario`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
-        .then(result => {
-            alert('Usuario agregado exitosamente');
-            document.getElementById("form-container").style.display = "none";
-            document.getElementById("add-form").reset();
-            obtenerDatos(); // Volver a cargar los datos
-            document.getElementById("view-container").style.display = "block";
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un error al agregar el usuario');
-        });
-    document.getElementById("view-container").style.display = "block";
-
+            .then(response => response.json())
+            .then(result => {
+                alert('Usuario agregado exitosamente');
+                document.getElementById("form-container").style.display = "none";
+                document.getElementById("add-form").reset();
+                obtenerDatos(); // Volver a cargar los datos
+                document.getElementById("view-container").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al agregar el usuario');
+            });
+        document.getElementById("view-container").style.display = "block";
     });
 }
-
 document.addEventListener('DOMContentLoaded', renderDocente);
