@@ -3,12 +3,15 @@
     font-weight: 400;
     font-style: normal;
 }
+
 html {
     overflow: hidden;
 }
+
 body {
     margin: 0 !important;
 }
+
 .layout {
     width: 100%;
     height: 100%;
@@ -19,6 +22,7 @@ body {
     height: 100vh;
     background-color: #ccc;
 }
+
 /* *** */
 /* ENCABEZADO*/
 /* *** */
@@ -28,6 +32,7 @@ header {
     color: #031c5c;
     display: flex;
 }
+
 .contenedor-header {
     grid-area: header;
     position: fixed;
@@ -35,6 +40,7 @@ header {
     background-color: rgb(245, 164, 14);
     z-index: 50;
 }
+
 .contenedor-header header {
     margin: auto;
     display: flex;
@@ -48,26 +54,32 @@ header {
     background-color: rgb(245, 164, 14);
     z-index: 50;
 }
+
 .txtNaranja {
     color: #2b09eb;
 }
+
 .yuo {
     margin-top: 0 20px 0;
     margin-left: 20px;
 }
+
 .contenedor-header header .redes a {
     text-decoration: none;
     color: #fff;
     display: inline-block;
     padding: 5px 8px;
 }
+
 .contenedor-header header .redes a:hover {
     color: #ff1133;
 }
+
 .nav-responsive {
     display: none;
     font-size: 25px;
 }
+
 /* *** */
 /* SIDEBAR*/
 /* *** */
@@ -79,6 +91,7 @@ aside {
     justify-content: initial;
     align-items: center;
 }
+
 .myButton {
     box-shadow: 8px 11px 11px -7px #030303c4;
     background: linear-gradient(to bottom, #fdfcfc 5%, #e7e9e9 100%);
@@ -98,21 +111,26 @@ aside {
     margin-left: 15px;
     width: 50%;
 }
+
 a {
     text-decoration: none;
     color: #3700ffaf;
 }
+
 .myButton>i {
     color: #000000;
 }
+
 .myButton:hover {
     background: linear-gradient(to bottom, #fff 5%, #fff 75%);
     background-color: #ccc;
 }
+
 .myButton:active {
     position: relative;
     top: 1px;
 }
+
 .sidebar {
     background-color: #FCF8F3;
     width: 200px;
@@ -120,6 +138,7 @@ a {
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     height: 100%;
 }
+
 /* *** */
 /* MAIN*/
 /* *** */
@@ -133,9 +152,11 @@ main {
     scrollbar-width: none;
     height: 100%;
 }
+
 #datos-container {
     width: 100%;
 }
+
 #datos-tabla {
     width: calc(100% - 10px);
     margin-left: 10px;
@@ -144,6 +165,7 @@ main {
     border-collapse: collapse;
     font-family: 'Poppins', sans-serif;
 }
+
 thead th {
     background-color: #ccc;
     width: 15%;
@@ -151,6 +173,7 @@ thead th {
     border: 1px solid #ddd;
     text-align: left;
 }
+
 tbody td {
     background-color: #f9f9f9;
     padding: 10px;
@@ -158,20 +181,26 @@ tbody td {
     padding: 5px;
     width: 15%;
 }
+
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 table td,
 table th {
     height: 15px;
 }
+
 #form-container {
-    display: none; /* Ocultar el formulario inicialmente */
+    display: none;
+    /* Ocultar el formulario inicialmente */
     margin-top: 20px;
 }
+
 .form-group {
     margin-bottom: 10px;
 }
+
 /* #fondoAdmin{
     height: calc(100% - 100px);
     border-radius: 50%;
@@ -188,6 +217,7 @@ footer {
     background-color: #ccc;
     padding: 5px;
 }
+
 /* *** */
 /* RESPONSE */
 /* *** */
@@ -202,15 +232,50 @@ footer {
             'footer main main';
     }
 }
+
 .content {
     /*background-color: #000;*/
     width: 100%;
     height: 7%;
 }
+
 #view-container {
     border: 1px solid #ccc;
     padding: 20px;
     background-color: #fff;
     height: auto;
     min-height: calc(100% - 41px);
+}
+
+/* ********** */
+/* Formulario */
+/* ********** */
+#form-container {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    border: 1px solid gray;
+    border-radius: 8px;
+    width: 400px;
+    height: 430px;
+    text-align: center;
+    z-index: 100000;
+}
+
+#add-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: end;
+    margin: 10%;
+}
+.btn-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-group {
+
 }
