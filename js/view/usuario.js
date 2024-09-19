@@ -2,64 +2,39 @@ function renderUsuario() {
     const container = $("#view-container");
     container.empty();
     const tablaHTML = `
+    <div class=content-agregar>
+    <div class="myButton" data-view="/agregar" id=btn-agregar>Añadir</div>
+    </div>
         <table id="datos-tabla">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>CI</th>
-                    <th>Teléfono</th>
-                    <th>Correo</th>
-                    <th>Fecha de Nacimiento</th>
-                    <th>Domicilio</th>
-                    <th></th>
-                </tr>
-            </thead>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>CI</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Domicilio</th>
+                <th></th>
+            </tr>
+        </thead>
             <tbody>
             </tbody>
         </table>
         <div class="content"></div>
-        <button id="btn-anadir">Añadir</button>
     `;
     container.append(tablaHTML);
-    obtenerDatos();
-    document.getElementById("btn-anadir").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "block";
-    });
-    document.getElementById("cancelar").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "none";
-    });
-    document.getElementById("add-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
+    document.querySelectorAll('.myButton').forEach(button => {
+        button.addEventListener('click', function () {
+            const ruta = button.getAttribute('data-view');
+            window.location.hash = ruta; // Cambiar la ruta en el hash
         });
-
-        // Enviar los datos a la URL usando fetch
-        fetch('https://66d901d94ad2f6b8ed533858.mockapi.io/datos', {
-        // fetch('http://192.168.1.12/Usuario', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(result => {
-                alert('Usuario agregado exitosamente');
-                document.getElementById("form-container").style.display = "none";
-                document.getElementById("add-form").reset();
-                obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error al agregar el usuario');
-            });
     });
+    // Configurar el botón "Añadir"
+    // document.getElementById("bt-anadir").addEventListener("click", function () {
+    //     configurarFormulario(); // Mostrar el formulario de agregar
+    // });
+    obtenerDatos();
 }
-
-// Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) {
     const tabla = document.getElementById('datos-tabla').getElementsByTagName('tbody')[0];
     datos.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -67,18 +42,11 @@ function cargarDatosEnTabla(datos) {
     datos.forEach(dato => {
         let fila = tabla.insertRow();
         fila.insertCell(0).textContent = dato.nombre || 'N/A';
-        fila.insertCell(1).textContent = dato.ci;
-        fila.insertCell(2).textContent = dato.telefono;
-        fila.insertCell(3).textContent = dato.correo;
-        fila.insertCell(4).textContent = new Date(dato.FechaNacimiento).toLocaleDateString();
-        fila.insertCell(5).textContent = dato.domicilio;
-        // fila.insertCell(0).textContent = dato.nombre || 'N/A';
-        // fila.insertCell(1).textContent = dato.DatosPersonale.ci;
-        // fila.insertCell(2).textContent = dato.DatosPersonale.telefono;
-        // fila.insertCell(3).textContent = dato.DatosPersonale.Correo;
-        // fila.insertCell(4).textContent = new Date(dato.DatosPersonale.FechaNacimiento).toLocaleDateString();
-        // fila.insertCell(5).textContent = dato.DatosPersonale.Domicilio;
-
+        fila.insertCell(1).textContent = dato.DatosPersonale.ci;
+        fila.insertCell(2).textContent = dato.DatosPersonale.telefono;
+        fila.insertCell(3).textContent = dato.DatosPersonale.Correo;
+        fila.insertCell(4).textContent = new Date(dato.DatosPersonale.FechaNacimiento).toLocaleDateString();
+        fila.insertCell(5).textContent = dato.DatosPersonale.Domicilio;
         let celdaAcciones = fila.insertCell(6);
         let btnEditar = document.createElement('button');
         btnEditar.textContent = 'Editar';
@@ -96,17 +64,16 @@ function cargarDatosEnTabla(datos) {
         btnAñadir.textContent = 'Añadir';
         btnAñadir.id = 'btn-añadir';
         btnAñadir.onclick = function () {
+            configurarFormulario();
         };
         celdaAcciones.appendChild(btnEditar);
         celdaAcciones.appendChild(btnEliminar);
         celdaAcciones.appendChild(btnAñadir);
     });
 }
-
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    const url = 'https://66d901d94ad2f6b8ed533858.mockapi.io/datos';
-    // const url = 'http://192.168.1.12/Usuario';
+    const url = `${URL_SERVER}/Usuario`;
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -122,5 +89,44 @@ function obtenerDatos() {
             document.getElementById('view-container').innerHTML = '<p>Error al cargar los datos.</p>';
         });
 }
-
-document.addEventListener('DOMContentLoaded', renderInicio);
+function configurarFormulario() {
+    // Mostrar el formulario cuando se hace clic en "Añadir"
+    document.getElementById("form-container").style.display = "block";
+    document.getElementById("view-container").style.display = "none";
+    // Ocultar el formulario cuando se hace clic en "Cancelar"
+    document.getElementById("cancelar").addEventListener("click", function () {
+        document.getElementById("form-container").style.display = "none";
+        document.getElementById("view-container").style.display = "block";
+    });
+    // Manejar el envío del formulario
+    document.getElementById("add-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        // Convertir el formulario a un objeto
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        fetch(`${URL_SERVER}/Usuario`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert('Usuario agregado exitosamente');
+                document.getElementById("form-container").style.display = "none";
+                document.getElementById("add-form").reset();
+                obtenerDatos(); // Volver a cargar los datos
+                document.getElementById("view-container").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al agregar el usuario');
+            });
+        document.getElementById("view-container").style.display = "block";
+    });
+}
+document.addEventListener('DOMContentLoaded', renderUsuario);

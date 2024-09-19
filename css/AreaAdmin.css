@@ -250,6 +250,22 @@ footer {
 /* ********** */
 /* Formulario */
 /* ********** */
+.content-agregar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+#btn-agregar {
+    text-align: center;
+    margin-top: 5px;
+    width: 10%;
+    color: #e27602;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
 #form-container {
     position: absolute;
     top: 25%;
@@ -271,11 +287,11 @@ footer {
     align-items: end;
     margin: 10%;
 }
-.btn-form{
+
+.btn-form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form-group {
 
-}
+.form-group {}
