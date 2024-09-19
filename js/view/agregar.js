@@ -48,7 +48,7 @@ function configurarFormulario() {
     // Mostrar el formulario y manejar el evento de "Cancelar"
     document.getElementById("form-container").style.display = "block";
     document.getElementById("cancelar-form").addEventListener("click", function () {
-        rutas(renderUsuario)
+        renderUsuario();
     });
     // Manejar el envío del formulario
     document.getElementById("add-form").addEventListener("submit", function (event) {
@@ -58,7 +58,6 @@ function configurarFormulario() {
         formData.forEach((value, key) => {
             data[key] = value;
         });
-
         fetch(`${URL_SERVER}/Usuario`, {
             method: 'POST',
             headers: {
@@ -66,17 +65,17 @@ function configurarFormulario() {
             },
             body: JSON.stringify(data)
         })
-        .then(response => response.json())
+        // .then(response => response.json())
         .then(result => {
             alert('Usuario agregado exitosamente');
-            document.getElementById("form-container").style.display = "none";
             document.getElementById("add-form").reset();
+            renderUsuario.rutas()
             obtenerDatos(); // Recargar datos
             document.getElementById("view-container").style.display = "block";
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Hubo un error al agregar el usuario');
+            alert('Hubo un error al agregar el usuario : catch');
         });
     });
 }

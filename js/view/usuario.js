@@ -60,15 +60,15 @@ function cargarDatosEnTabla(datos) {
         btnEliminar.onclick = function () {
             alert('Eliminar ' + dato.nombre);
         };
-        let btnAñadir = document.createElement('button');
-        btnAñadir.textContent = 'Añadir';
-        btnAñadir.id = 'btn-añadir';
-        btnAñadir.onclick = function () {
-            configurarFormulario();
-        };
+        // let btnAñadir = document.createElement('button');
+        // btnAñadir.textContent = 'Añadir';
+        // btnAñadir.id = 'btn-añadir';
+        // btnAñadir.onclick = function () {
+        //     configurarFormulario();
+        // };
         celdaAcciones.appendChild(btnEditar);
         celdaAcciones.appendChild(btnEliminar);
-        celdaAcciones.appendChild(btnAñadir);
+        // celdaAcciones.appendChild(btnAñadir);
     });
 }
 // Función para obtener los datos desde el host remoto

@@ -1,65 +1,94 @@
-// Function to dynamically load scripts
-function loadScript(src) {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = () => resolve(script);
-        script.onerror = () => reject(new Error(`Script load error for ${src}`));
-        document.body.appendChild(script);
-    });
-}
-
-// Function to handle route changes
-function rutas() {
-    const path = window.location.hash.substring(1) || '/inicio'; // Default to '/inicio' if no hash is set
-    console.log(path);
-
-    const scriptMap = {
-        '/agregar': './js/view/agregar.js',
-        '/inicio': './js/view/inicio.js',
-        '/usuario': './js/view/usuario.js',
-        '/docente': './js/view/docente.js',
-        '/roles': './js/view/roles.js'
-    };
-
-    const scriptPath = scriptMap[path];
-
-    if (scriptPath) {
-        console.log(`${path} route detected`);
-        loadScript(scriptPath)
-            .then(() => {
-                console.log(`Script for ${path} loaded`);
-                const renderFunction = window[`render${path.charAt(1).toUpperCase() + path.slice(2)}`];
-                if (typeof renderFunction === 'function') {
-                    renderFunction();
-                } else {
-                    console.error(`Function render${path.charAt(1).toUpperCase() + path.slice(2)} not defined`);
-                }
-            })
-            .catch(err => {
-                console.error(`Error loading script for ${path}:`, err);
-            });
-    } else {
-        console.error(`No script mapped for ${path}`);
-    }
-}
-
-// Event listener for hash changes
-window.addEventListener('hashchange', rutas);
-
-// Initial call to handle the default route
-document.addEventListener('DOMContentLoaded', rutas);
-
-// Handle form cancel button
-document.getElementById("cancelar-form")?.addEventListener("click", function () {
-    window.location.hash = '/inicio'; // Redirect to a default or specific route
-});
-
-// Handle .myButton click events
 document.querySelectorAll('.myButton').forEach(button => {
     button.addEventListener('click', function () {
         const ruta = button.getAttribute('data-view');
         window.location.hash = ruta;
         rutas();
     });
+});
+function loadScript(src) {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+    });
+}
+function rutas() {
+    let path = window.location.hash.substring(1);
+    console.log(path);
+    if (path === '/agregar') {
+        console.log("/Agregar");
+        // Asegúrate de cargar el script de usuario
+        loadScript('./js/view/agregar.js').then(() => {
+            console.log("Script de Añadir cargado");
+            if (typeof renderAgregar === 'function') {
+                renderAgregar();
+            } else {
+                console.error("La función renderAgregar no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Agregar:", err);
+        });
+    }
+    if (path === '/inicio') {
+        console.log("/inicio");
+        loadScript('./js/view/inicio.js').then(() => {
+            console.log("Script de Inicio cargado");
+            if (typeof renderInicio === 'function') {
+                renderInicio();
+            } else {
+                console.error("La función renderUsuario no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Usuario:", err);
+        });
+    }
+    if (path === '/usuario') {
+        console.log("/usuario");
+        // Asegúrate de cargar el script de usuario
+        loadScript('./js/view/usuario.js').then(() => {
+            console.log("Script de Usuario cargado");
+            if (typeof renderUsuario === 'function') {
+                renderUsuario();
+            } else {
+                console.error("La función renderUsuario no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Usuario:", err);
+        });
+    }
+    if (path === '/docente') {
+        console.log("/docente");
+        loadScript('./js/view/docente.js').then(() => {
+            console.log("Script de Docente cargado");
+            if (typeof renderDocente === 'function') {
+                renderDocente();
+            } else {
+                console.error("La función renderdocente no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Docente:", err);
+        });
+    }
+    if (path === '/roles') {
+        console.log("/roles");
+        // Asegúrate de cargar el script de usuario
+        loadScript('./js/view/roles.js').then(() => {
+            console.log("Script de Roles cargado");
+            if (typeof renderRoles === 'function') {
+                renderRoles();
+            } else {
+                console.error("La función renderRoles no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Roles:", err);
+        });
+    }
+}
+window.addEventListener('hashchange', (e) => {
+    rutas(e);
+});
+$(document).ready(() => {
+    rutas('');
 });
