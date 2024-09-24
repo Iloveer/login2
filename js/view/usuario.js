@@ -1,4 +1,4 @@
-function renderInicio() {
+function renderUsuario() {
     const container = $("#view-container");
     container.empty();
     const tablaHTML = `
