@@ -105,7 +105,7 @@ a {
 .myButton>i {
     color: #000000;
 }
-.myButton:hover {
+.myButton:active {
     background: linear-gradient(to bottom, #fff 5%, #fff 75%);
     background-color: #ccc;
 }
