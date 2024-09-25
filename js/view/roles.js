@@ -130,4 +130,3 @@ document.addEventListener('DOMContentLoaded', renderDocente);
 //     tabla.innerHTML = '<tr><td colspan="6">Cargando...</td></tr>';
 // }
 // // document.addEventListener('DOMContentLoaded', obtenerDatos); // Llama a obtenerDatos en lugar de cargarDatosEnTabla
-

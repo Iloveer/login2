@@ -2,6 +2,7 @@ document.querySelectorAll('.myButton').forEach(button => {
     button.addEventListener('click', function () {
         const ruta = button.getAttribute('data-view');
         window.location.hash = ruta;
+        rutas();
     });
 });
 function loadScript(src) {
@@ -16,9 +17,32 @@ function loadScript(src) {
 function rutas() {
     let path = window.location.hash.substring(1);
     console.log(path);
-    if (path === '/admin') {
-        console.log("/admin");
-        // Lógica para cargar la vista de admin si es necesario
+    //para formulario
+    const container = document.getElementById("view-container");
+    container.classList.remove('agregar-active');
+    //para diferenciar rutas
+    document.querySelectorAll('.myButton').forEach(button => {
+        const ruta = button.getAttribute('data-view');
+        if (ruta === path) {
+            button.classList.add('active'); // Agregar la clase 'active' al botón actual
+        } else {
+            button.classList.remove('active'); // Remover la clase 'active' de los demás botones
+        }
+    });
+    if (path === 'Usuario/Agregar') {
+        console.log("/Agregar");
+        container.classList.add('agregar-active');
+        // Asegúrate de cargar el script de usuario
+        loadScript('./js/view/agregar.js').then(() => {
+            console.log("Script de Añadir cargado");
+            if (typeof renderAgregar === 'function') {
+                renderAgregar();
+            } else {
+                console.error("La función renderAgregar no está definida");
+            }
+        }).catch((err) => {
+            console.error("Error al cargar el script de Agregar:", err);
+        });
     }
     if (path === '/inicio') {
         console.log("/inicio");

@@ -130,6 +130,26 @@ a {
     position: relative;
     top: 1px;
 }
+.myButton.active {
+    box-shadow: 8px 11px 11px -7px #030303c4;
+    background: linear-gradient(to bottom, #ffca9f 5%, #e7e9e9 100%);
+    background-color: #ccc;
+    border-radius: 14px;
+    display: inline-block;
+    align-items: center;
+    cursor: pointer;
+    color: #ff6e06af;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 13px 32px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #3d768a;
+    margin-top: 30px;
+    margin-left: 15px;
+    width: 50%;
+}
+
 
 .sidebar {
     background-color: #FCF8F3;
@@ -250,8 +270,33 @@ footer {
 /* ********** */
 /* Formulario */
 /* ********** */
+#view-container.agregar-active {
+    background-image: url(../img/logi.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: calc(55% - 41px);
+    /*background-color: rgba(255, 255, 255, 0.8);*/
+    overflow: hidden;
+    padding: 10px;
+}
+.content-agregar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+#btn-agregar {
+    text-align: center;
+    margin-top: 5px;
+    width: 10%;
+    color: #e27602;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
 #form-container {
-    position: absolute;
+    position: relative;
     top: 25%;
     left: 25%;
     background-color: transparent;
@@ -271,11 +316,11 @@ footer {
     align-items: end;
     margin: 10%;
 }
-.btn-form{
+
+.btn-form {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.form-group {
 
-}
+.form-group {}
