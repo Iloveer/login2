@@ -17,8 +17,21 @@ function loadScript(src) {
 function rutas() {
     let path = window.location.hash.substring(1);
     console.log(path);
-    if (path === '/agregar') {
+    //para formulario
+    const container = document.getElementById("view-container");
+    container.classList.remove('agregar-active');
+    //para diferenciar rutas
+    document.querySelectorAll('.myButton').forEach(button => {
+        const ruta = button.getAttribute('data-view');
+        if (ruta === path) {
+            button.classList.add('active'); // Agregar la clase 'active' al botón actual
+        } else {
+            button.classList.remove('active'); // Remover la clase 'active' de los demás botones
+        }
+    });
+    if (path === 'Usuario/Agregar') {
         console.log("/Agregar");
+        container.classList.add('agregar-active');
         // Asegúrate de cargar el script de usuario
         loadScript('./js/view/agregar.js').then(() => {
             console.log("Script de Añadir cargado");

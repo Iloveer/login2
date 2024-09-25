@@ -3,7 +3,7 @@ function renderUsuario() {
     container.empty();
     const tablaHTML = `
     <div class=content-agregar>
-    <div class="myButton" data-view="/agregar" id=btn-agregar>Añadir</div>
+    <div class="myButton" data-view="Usuario/Agregar" id=btn-agregar>Añadir</div>
     </div>
         <table id="datos-tabla">
         <thead>
