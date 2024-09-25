@@ -73,7 +73,7 @@ function cargarDatosEnTabla(datos) {
 }
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    const url = `${URL_SERVER}/Usuario`;
+    const url = `${URL_SERVER}/Usuario/lista`;
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -107,7 +107,7 @@ function configurarFormulario() {
         formData.forEach((value, key) => {
             data[key] = value;
         });
-        fetch(`${URL_SERVER}/Usuario`, {
+        fetch(`${URL_SERVER}/Usuario/crear`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

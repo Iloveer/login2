@@ -59,7 +59,7 @@ function configurarFormulario() {
         formData.forEach((value, key) => {
             data[key] = value;
         });
-        fetch(`${URL_SERVER}/Usuario`, {
+        fetch(`${URL_SERVER}/Usuario/crear`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
