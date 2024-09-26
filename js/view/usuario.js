@@ -3,6 +3,7 @@ function renderUsuario() {
     container.empty();
     const tablaHTML = `
     <div class=content-agregar>
+    <div class="myButton" data-view="Usuario" id=btn-Actualizar>Actualizar</div>
     <div class="myButton" data-view="Usuario/Agregar" id=btn-agregar>Añadir</div>
     </div>
         <table id="datos-tabla">
@@ -29,6 +30,19 @@ function renderUsuario() {
             window.location.hash = ruta; // Cambiar la ruta en el hash
         });
     });
+        // Añadir evento al botón de "Actualizar"
+        document.getElementById('btn-Actualizar').addEventListener('click', function() {
+            // Refresca la vista del usuario
+            renderUsuario(); 
+        });
+    
+        // Añadir evento al botón de "Añadir"
+        document.getElementById('btn-agregar').addEventListener('click', function() {
+            const ruta = this.getAttribute('data-view');
+            window.location.hash = ruta;
+        });
+    
+        obtenerDatos();
     // Configurar el botón "Añadir"
     // document.getElementById("bt-anadir").addEventListener("click", function () {
     //     configurarFormulario(); // Mostrar el formulario de agregar
@@ -58,8 +72,27 @@ function cargarDatosEnTabla(datos) {
         btnEliminar.textContent = 'Eliminar';
         btnEliminar.className = 'btn-eliminar';
         btnEliminar.onclick = function () {
-            alert('Eliminar ' + dato.nombre);
+            if (confirm(`¿Estás seguro de que quieres eliminar a ${dato.nombre}?`)) {
+                fetch(`${URL_SERVER}/Usuario/eliminar/${dato.id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error al eliminar el usuario');
+                    }
+                    return response.json();
+                })
+                .then(result => {
+                    alert('Usuario eliminado correctamente');
+                    obtenerDatos(); // Volver a cargar los datos en la tabla después de eliminar
+                })
+                .catch(error => {
+                    console.error('Hubo un problema al eliminar el usuario:', error);
+                    alert('Error al eliminar el usuario');
+                });
+            }
         };
+        
         // let btnAñadir = document.createElement('button');
         // btnAñadir.textContent = 'Añadir';
         // btnAñadir.id = 'btn-añadir';
@@ -129,4 +162,5 @@ function configurarFormulario() {
         document.getElementById("view-container").style.display = "block";
     });
 }
+
 document.addEventListener('DOMContentLoaded', renderUsuario);
