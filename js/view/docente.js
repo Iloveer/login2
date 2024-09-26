@@ -22,38 +22,38 @@ function renderDocente() {
     `;
     container.append(tablaHTML);
     obtenerDatos();
-    document.getElementById("bt-anadir").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "block";
-    });
-    document.getElementById("cancelar").addEventListener("click", function () {
-        document.getElementById("form-container").style.display = "none";
-    });
-    document.getElementById("add-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
-        fetch(`${URL_SERVER}/Usuario`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(result => {
-                alert('Usuario agregado exitosamente');
-                document.getElementById("form-container").style.display = "none";
-                document.getElementById("add-form").reset();
-                obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Hubo un error al agregar el usuario');
-            });
-    });
+    // document.getElementById("bt-anadir").addEventListener("click", function () {
+    //     document.getElementById("form-container").style.display = "block";
+    // });
+    // document.getElementById("cancelar").addEventListener("click", function () {
+    //     document.getElementById("form-container").style.display = "none";
+    // });
+    // document.getElementById("add-form").addEventListener("submit", function (event) {
+    //     event.preventDefault();
+    //     const formData = new FormData(this);
+    //     const data = {};
+    //     formData.forEach((value, key) => {
+    //         data[key] = value;
+    //     });
+    //     fetch(`${URL_SERVER}/Usuario/crear`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data)
+    //     })
+    //         .then(response => response.json())
+    //         .then(result => {
+    //             alert('Usuario agregado exitosamente');
+    //             document.getElementById("form-container").style.display = "none";
+    //             document.getElementById("add-form").reset();
+    //             obtenerDatos(); // Volver a cargar los datos para reflejar el nuevo usuario
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //             alert('Hubo un error al agregar el usuario');
+    //         });
+    // });
 }
 // Función para cargar los datos en la tabla
 function cargarDatosEnTabla(datos) {
@@ -94,7 +94,7 @@ function cargarDatosEnTabla(datos) {
 }
 // Función para obtener los datos desde el host remoto
 function obtenerDatos() {
-    const url = `${URL_SERVER}/Usuario`;
+    const url = `${URL_SERVER}/Usuario/lista`;
     fetch(url)
         .then(response => {
             if (!response.ok) {
