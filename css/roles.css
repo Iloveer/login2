@@ -1,11 +1,13 @@
-
+/* *********** */
+/* TABLA ROLES */
+/* *********** */
         body {
             font-family: Arial, sans-serif;
         }
         table {
             border-collapse: collapse;
-            width: 100%;
-            max-width: 600px;
+            width: 600px;
+           
             margin: 20px auto;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
@@ -55,4 +57,4 @@
         input[type="checkbox"]:hover {
             background-color: #e6f2ff;
         }
-    
+ /* ***FIN TABLA ROLES*** */
