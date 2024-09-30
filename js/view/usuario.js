@@ -3,8 +3,8 @@ function renderUsuario() {
     container.empty();
     const tablaHTML = `
     <div class=content-agregar>
-    <div class="myButton" data-view="Usuario" id=btn-Actualizar>Actualizar</div>
-    <div class="myButton" data-view="Usuario/Agregar" id=btn-agregar>Añadir</div>
+    <div class="Add-Update" data-view="Usuario" id=btn-Actualizar>Actualizar</div>
+    <div class="Add-Update" data-view="Usuario/Agregar" id=btn-agregar>Añadir</div>
     </div>
         <table id="datos-tabla">
         <thead>
@@ -66,7 +66,8 @@ function cargarDatosEnTabla(datos) {
         btnEditar.textContent = 'Editar';
         btnEditar.className = 'btn-editar';
         btnEditar.onclick = function () {
-            alert('Editar ' + dato.nombre);
+            window.location.hash = '/Usuario/Editar';
+            configurarFormularioActualizar(dato);
         };
         let btnEliminar = document.createElement('button');
         btnEliminar.textContent = 'Eliminar';
@@ -162,5 +163,46 @@ function configurarFormulario() {
         document.getElementById("view-container").style.display = "block";
     });
 }
+function configurarFormularioActualizar(dato) {
+    document.getElementById("form-container").style.display = "block";
+    document.getElementById("view-container").style.display = "none";
+    document.getElementById("nombre").value = dato.nombre;
+    document.getElementById("ci").value = dato.DatosPersonale.ci;
+    document.getElementById("telefono").value = dato.DatosPersonale.telefono;
+    document.getElementById("correo").value = dato.DatosPersonale.Correo;
+    document.getElementById("fechanacimiento").value = dato.DatosPersonale.FechaNacimiento;
+    document.getElementById("domicilio").value = dato.DatosPersonale.Domicilio;
+    document.getElementById("gradoacademico").value = dato.DatosAcademico.GradoAcademico;
+    document.getElementById("areaespecializacion").value = dato.DatosAcademico.AreaEspecializacion;
+    document.getElementById("grado").value = dato.DatosAcademico.Grado;
+    document.getElementById("add-form").onsubmit = function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+        fetch(`${URL_SERVER}/Usuario/actualizar/${dato.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(result => {
+                alert('Usuario actualizado exitosamente');
+                document.getElementById("form-container").style.display = "none";
+                document.getElementById("add-form").reset();
+                obtenerDatos(); // Volver a cargar los datos
+                document.getElementById("view-container").style.display = "block";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un error al actualizar el usuario');
+            });
+    };
+}
+
 
 document.addEventListener('DOMContentLoaded', renderUsuario);

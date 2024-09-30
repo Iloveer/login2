@@ -132,6 +132,24 @@ function rutas() {
         console.error("Error al cargar el script de Roles:", err);
       });
   }
+  if (path === "/Usuario/Editar") {
+    console.log("/Editar");
+    changeStylesheet("AreaAdmin.css");
+    container.classList.add("agregar-active");
+    // Asegúrate de cargar el script de usuario
+    loadScript("./js/view/agregar.js")
+      .then(() => {
+        console.log("Script de Añadir cargado");
+        if (typeof renderAgregar === "function") {
+          renderAgregar();
+        } else {
+          console.error("La función renderAgregar no está definida");
+        }
+      })
+      .catch((err) => {
+        console.error("Error al cargar el script de Agregar:", err);
+      });
+  }
 }
 window.addEventListener("hashchange", (e) => {
   rutas(e);
